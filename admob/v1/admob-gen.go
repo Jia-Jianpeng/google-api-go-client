@@ -2745,7 +2745,7 @@ func (c *AccountsNetworkReportGenerateCall) doRequest(alt string) (*http.Respons
 // response was returned at all) in error.(*googleapi.Error).Header. Use
 // googleapi.IsNotModified to check whether the returned error was
 // because http.StatusNotModified was returned.
-func (c *AccountsNetworkReportGenerateCall) Do(opts ...googleapi.CallOption) (*GenerateNetworkReportResponse, error) {
+func (c *AccountsNetworkReportGenerateCall) Do(opts ...googleapi.CallOption) ([]*GenerateNetworkReportResponse, error) {
 	gensupport.SetOptions(c.urlParams_, opts...)
 	res, err := c.doRequest("json")
 	if res != nil && res.StatusCode == http.StatusNotModified {
@@ -2764,12 +2764,7 @@ func (c *AccountsNetworkReportGenerateCall) Do(opts ...googleapi.CallOption) (*G
 	if err := googleapi.CheckResponse(res); err != nil {
 		return nil, err
 	}
-	ret := &GenerateNetworkReportResponse{
-		ServerResponse: googleapi.ServerResponse{
-			Header:         res.Header,
-			HTTPStatusCode: res.StatusCode,
-		},
-	}
+	ret := []*GenerateNetworkReportResponse{}
 	target := &ret
 	if err := gensupport.DecodeResponse(target, res); err != nil {
 		return nil, err
